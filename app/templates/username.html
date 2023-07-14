@@ -19,7 +19,9 @@
             {% endif %}
           </h1>
         </a>
-        <p class="text-gray-600 w-fit lg:w-80" style="font-family:sans-serif;">{{bio}}</p>
+        {% if bio %}
+          <p class="text-gray-600 w-fit lg:w-80" style="font-family:sans-serif;">{{bio}}</p>
+        {% endif %}
         <div class="flex justify-center">
         <ul class="flex gap-3">
           {% if twitter %}
