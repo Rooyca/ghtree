@@ -1,0 +1,20 @@
+{% extends "/shared/_base.html" %}
+
+{% block content %}
+
+<div 
+	id="main"
+	class="w-full flex px-8 justify-center items-center flex-col gap-8 bg-cover bg-no-repeat bg-gray-100  text-black"
+	style="height: 100vh; font-family: 'Open Sans'; background-image:linear-gradient(rgba(0, 0, 40, 0.8),rgba(0, 0, 40, 0.8)), url('https://raw.githubusercontent.com/brave/brave-core/1.5.x/components/img/newtab/ntp-8.webp');"
+	>
+	<div class="space-y-4 text-center  bg-gray-100 p-8 rounded ">
+		<h1 
+			class="text-gray-900"
+			style="font-weight: bold; font-size: 2rem"
+
+		>{{status_code}}</h1>
+		<h2 class="text-gray-600">{{text}}</h2>
+	</div>
+</div>
+
+{% endblock %}

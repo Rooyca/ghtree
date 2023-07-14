@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>{{ page_title }}</title>
-  <meta name="description" content="{{ page_description }}"/>
+  <meta name="description" content="If you're looking for a different way to display your GitHub profile, similar to LinkTree but specifically for GitHub, you can consider using GHTree"/>
 
   <!-- OPTIONAL: Facebook Open Graph: https://developers.facebook.com/docs/sharing/opengraph -->
-  <meta property="og:site_name" content="{{ site_name }}"/>
-  <meta property="og:type" content="Simple site featuring tailwind and htmx..."/>
+  <meta property="og:site_name" content="GHTree"/>
+  <meta property="og:type" content="If you're looking for a different way to display your GitHub profile, similar to LinkTree but specifically for GitHub, you can consider using GHTree"/>
   <meta property="og:title" content="{{ page_title }}"/>
-  <meta property="og:description"  content="{{ page_description }}"/>
-  <meta property="og:url" content="https://wwww.example.com"/>
+  <meta property="og:description"  content="If you're looking for a different way to display your GitHub profile, similar to LinkTree but specifically for GitHub, you can consider using GHTree"/>
+  <!--<meta property="og:url" content="https://rooyca.github.io/ghtree"/>-->
 
   <!-- OPTIONAL: Favicon! -->
   <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
@@ -21,18 +21,19 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+
+  <!-- JS -->
+  <script src="/static/js/htmx.min.js"></script>
 </head>
 
-<body class="bg-slate-900">
-    {% block header %}
-    {% include "/shared/_header.html" %}
-    {% endblock %}
+<body style="background-image:linear-gradient(rgba(0, 0, 40, 0.8),rgba(0, 0, 40, 0.8))">
 
-    {% block content %}
-    {% endblock %}
+{% block content %}
+{% endblock %}
 
-    {% block footer %}
-    {% include "/shared/_footer.html" %}
-    {% endblock %}
+{% block footer %}
+{% include "/shared/_footer.html" %}
+{% endblock %}
+
 </body>
 </html>

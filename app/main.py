@@ -1,13 +1,17 @@
 import subprocess
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
 from app.config import Settings
 from app.routes import router
 
 settings = Settings()
+
+templates = Jinja2Templates(directory=settings.TEMPLATE_DIR)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -43,6 +47,19 @@ def get_app() -> FastAPI:
 
 app = get_app()
 
+@app.middleware("http")
+async def add_process_time_header(request: Request, call_next):
+    response = await call_next(request)
+
+    if response.status_code == 404:
+        return templates.TemplateResponse("404.html", {
+            "request": request,
+            "status_code": response.status_code,
+            "text": "Page not found",
+            "page_title": "GHTree | Not Found",
+            })
+
+    return response
 
 if __name__ == "__main__":
     import uvicorn

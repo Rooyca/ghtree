@@ -5,7 +5,7 @@ name = ""
 version = ""
 description = ""
 authors = [
-    {name = "Mario Munoz", email = "pythonbynight@gmail.com"},
+    {name = "rooyca", email = "rooyca.f9rnz@aleeas.com"},
 ]
 dependencies = [
     "fastapi>=0.95.0",
@@ -14,6 +14,7 @@ dependencies = [
     "pytest>=7.2.1",
     "Jinja2>=3.1.2",
     "pytailwindcss>=0.1.4",
+    "requests>=2.31.0",
 ]
 requires-python = ">=3.11"
 license = {text = "MIT"}

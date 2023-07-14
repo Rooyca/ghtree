@@ -1,8 +1,28 @@
 {% extends "/shared/_base.html" %}
 
 {% block content %}
-    <section id="body" class="flex flex-col bg-slate-50 justify-center items-center max-w-screen-lg m-auto py-10">
-    <h1>Simple Site</h1>
-    <p>This is just a simple site for you. Does this work.</p>
-    </section>
+<div 
+    id="main"
+    class="w-full flex px-8 justify-center items-center flex-col gap-8 bg-cover bg-no-repeat bg-gray-100  text-black"
+    style="height: 100vh; font-family: 'Open Sans'; background-image:linear-gradient(rgba(0, 0, 40, 0.8),rgba(0, 0, 40, 0.8)), url('https://raw.githubusercontent.com/brave/brave-core/1.5.x/components/img/newtab/ntp-8.webp');"
+    >
+    <div class="text-center bg-gray-100 p-8 rounded">
+        <input type="text" 
+               value=""
+               name="username"
+               placeholder="GitHub Username" 
+               hx-get='/'
+               hx-swap="innerHTML"
+               hx-trigger="[Enter]"
+               hx-target="body"
+               style="height:27px; border:1px solid purple; border-radius:4px; padding:5px">
+        <button 
+            class="font-bold text-purple-500 border-4 border-gray-900" 
+            style="border:1px solid purple; padding:1px; border-radius:5px; padding-left: 7px; padding-right: 7px; margin-left:6px"
+            >
+            Search
+        </button>
+    </div>
+</div>
+
 {% endblock %}
