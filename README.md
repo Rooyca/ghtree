@@ -22,7 +22,7 @@ There are two ways to run the app locally, using Docker or Python.
 #### 🐳 Docker (recommended)
 
 ```sh
-docker run --rm -p 8000:8000 ghcr.io/rooyca/ghtree:latest
+docker run --rm -p 8000:8000 ghcr.io/rooyca/ghtree:master
 ```
 
 You could also build the image yourself.
