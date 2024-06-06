@@ -40,7 +40,8 @@ def get_user_markdown(request: Request, username: str):
             "status_code": 404,
             "text": "NOPE",
             })
-    parsed_data = parse_markdown(requests.get(url).text)
+    data_response = requests.get(url).text
+    parsed_data = parse_markdown(data_response)
 
     return templates.TemplateResponse("v2_user.html", {
         "request": request,

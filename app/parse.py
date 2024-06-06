@@ -41,7 +41,7 @@ def parse_markdown(data: str):
                 desc = line_parsed[0].replace("- [", "").replace("* [", "").strip()
                 url = line_parsed[1].replace(")", "").strip()
                 user_data_final["profile_items"].append({"desc": desc, "url": url})
-        if line == data[-1]:
+        if line == "--- End ---":
             break
 
     return user_data_final
