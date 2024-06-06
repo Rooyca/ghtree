@@ -1,19 +1,20 @@
 # 🌳 GHTree
 
-Web app similar to LinkTree using information from GitHub profile.  
-> From [simplesite template](https://github.com/tataraba/simplesite)
+Web app similar to LinkTree using information from GitHub.  
 
-![ShowCase](showcase.png)
+![ShowCase](showcase_2.png)
 
 ## 🧪 Try it out
 
 > It may take a few seconds to load the first time.
 
-### [https://ghtree.fly.dev/](https://ghtree.fly.dev/)
+### https://ghtree.onrender.com/v2/rooyca
+
+## 🌟 Don't hesitate to open a pull request with [your own profile](app/data/rooyca.md). 🌟
 
 ## 🚀 Deploy
 
-You can run your own instance locally or deploy it to a serverless platform like [Fly.io](https://fly.io/).
+You can run your own instance locally or deploy it to a serverless platform like [Fly.io](https://fly.io/) or [Render](https://render.com/).
 
 ### -> Locally
 
@@ -43,7 +44,7 @@ Although I recommend using the [alpine version](Dockerfile), since it is the sma
 
 | Dockerfile | Size |
 | --- | --- |
-| [Dockerfile (alpine)](Dockerfile) | 163 MB |
+| [Dockerfile (alpine)](Dockerfile) | 167 MB |
 | [Dockerfile.slim](Dockerfile.slim) | 562 MB |
 | [Dockerfile.full](Dockerfile.full) | +1 GB |
 
@@ -57,7 +58,7 @@ python -m uvicorn app.main:app --reload
 
 ### -> Serverless
 
-You can deploy the app to any serverless platform that supports Python apps, like [Fly](https://fly.io/) or any other.
+You can deploy the app to any serverless platform that supports Python apps, like [Fly](https://fly.io/), [Render](https://render.com/) or any other.
 
 #### 🦋 Fly.io
 
@@ -65,6 +66,16 @@ You can deploy the app to any serverless platform that supports Python apps, lik
 fly launch
 fly deploy
 ```
+
+#### 🚀 Render
+
+Run it with Docker. Use the following image:
+
+```sh
+ghcr.io/rooyca/ghtree:master
+```
+
+That's it! 🎉
 
 ## 🛠️ Build with
 
