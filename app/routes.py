@@ -28,7 +28,9 @@ def get_user_markdown(request: Request, username: str):
     # check if a file with username exists in repo
     try:
         response = requests.get(URL_REPO)
+        print(response)
         data = response.json()
+        print(data)
         for item in data:
             if item.get("name") == f"{username}.md":
                 url = item.get("download_url")
