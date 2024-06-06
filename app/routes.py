@@ -11,6 +11,7 @@ settings = Settings()
 templates = Jinja2Templates(directory=settings.TEMPLATE_DIR)
 
 router = APIRouter()
+URL_REPO = "https://api.github.com/repos/rooyca/ghtree/contents/app/data"
 
 @router.get("/")
 def index(request: Request):
@@ -24,11 +25,14 @@ def index(request: Request):
 
 @router.get("/v2/{username}")
 def get_user_markdown(request: Request, username: str):
-    # check if a file with username exists in data folder
+    # check if a file with username exists in repo
     try:
-        print(username)
-        with open(f"app/data/{username}.md", "r") as f:
-            data = f.read()
+        response = requests.get(URL_REPO)
+        data = response.json()
+        for item in data:
+            if item.get("name") == f"{username}.md":
+                url = item.get("download_url")
+                break
     except FileNotFoundError:
         return templates.TemplateResponse("404.html", {
             "request": request,
@@ -36,7 +40,7 @@ def get_user_markdown(request: Request, username: str):
             "status_code": 404,
             "text": "NOPE",
             })
-    parsed_data = parse_markdown(data)
+    parsed_data = parse_markdown(requests.get(url).text)
 
     return templates.TemplateResponse("v2_user.html", {
         "request": request,
