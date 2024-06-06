@@ -1,14 +1,14 @@
 <!-- Last updated: 2024-06-06 -->
 
 <!-- Profile Picture -->
-- profile-picture: https://upload.wikimedia.org/wikipedia/commons/1/13/Michelangelo%2C_Creation_of_Adam_06.jpg
+- profile-picture: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Cima_da_Conegliano%2C_God_the_Father.jpg/640px-Cima_da_Conegliano%2C_God_the_Father.jpg
 
 <!-- Name -->
 # god
 
 <!-- Short Bio -->
 | Pronouns: they/them
-| Occupation: Rule
+| Occupation: ruling the world
 | Location: Heaven
 
 --- Bio ---
