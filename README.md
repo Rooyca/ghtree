@@ -74,6 +74,10 @@ fly deploy
 - [GitHub API](https://docs.github.com/en/rest)
 - [Font Awesome](https://fontawesome.com/)
 
+## 📝 TODO
+
+- [ ] Add nix support
+
 ## 📄 License
 
 [MIT](LICENSE)
