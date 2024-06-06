@@ -2,9 +2,10 @@ from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
-import requests, json
+import requests, json, os
 
 from app.config import Settings
+from app.parse import parse_markdown
 
 settings = Settings()
 templates = Jinja2Templates(directory=settings.TEMPLATE_DIR)
@@ -20,6 +21,34 @@ def index(request: Request):
         return RedirectResponse(url=f"/{username}")
 
     return templates.TemplateResponse("main.html", {"request": request, "page_title": "GHTree | Search"})
+
+@router.get("/v2/{username}")
+def get_user_markdown(request: Request, username: str):
+    # check if a file with username exists in data folder
+    try:
+        print(username)
+        with open(f"app/data/{username}.md", "r") as f:
+            data = f.read()
+    except FileNotFoundError:
+        return templates.TemplateResponse("404.html", {
+            "request": request,
+            "page_title": "GHTree | Not Found",
+            "status_code": 404,
+            "text": "NOPE",
+            })
+    parsed_data = parse_markdown(data)
+
+    return templates.TemplateResponse("v2_user.html", {
+        "request": request,
+        "profile_picture": parsed_data.get("profile_picture"),
+        "username": parsed_data.get("username"),
+        "pronouns": parsed_data.get("Pronouns"),
+        "occupation": parsed_data.get("Occupation"),
+        "location": parsed_data.get("Location"),
+        "bio": parsed_data.get("bio"),
+        "profile_items": parsed_data.get("profile_items"),
+        "page_title": f"GHTree | {parsed_data.get('username')}",
+        })
 
 @router.get("/{username}")
 def index(request: Request, username: str):
