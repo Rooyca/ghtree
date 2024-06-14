@@ -30,8 +30,8 @@ def get_user_markdown(request: Request, username: str):
         response = requests.get(URL_REPO)
         data = response.json()
         for item in data:
-            if item.get("name") == f"{username}.md":
-                url = item.get("download_url")
+            if item["name"] == f"{username}.md":
+                url = item["download_url"]
                 break
     except FileNotFoundError:
         return templates.TemplateResponse("404.html", {
