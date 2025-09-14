@@ -3,6 +3,5 @@ jinja2
 jinja2-fragments
 python-multipart
 pytest
-pytailwindcss
-tinydb
+pytailwindcss==0.1.4
 requests

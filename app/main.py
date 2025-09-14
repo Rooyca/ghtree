@@ -3,7 +3,6 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import Settings
@@ -25,7 +24,7 @@ async def lifespan(app: FastAPI):
             "-i",
             str(settings.STATIC_DIR / "src" / "tw.css"),
             "-o",
-            str(settings.STATIC_DIR / "css" / "main.css"),
+            str(settings.STATIC_DIR / "css" / "main_new.css"),
         ])
     except Exception as e:
         print(f"Error running tailwindcss: {e}")
