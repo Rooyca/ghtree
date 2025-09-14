@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
-import requests, json, os
+import requests
 
 from app.config import Settings
 from app.parse import parse_markdown
@@ -27,7 +27,7 @@ def index(request: Request):
 def get_user_markdown(request: Request, username: str):
     # check if a file with username exists in repo
     try:
-        response = requests.get(URL_REPO)
+        response = requests.get(URL_REPO, timeout=20)
         data = response.json()
         for item in data:
             if item["name"] == f"{username}.md":
@@ -40,7 +40,7 @@ def get_user_markdown(request: Request, username: str):
             "status_code": 404,
             "text": "NOPE",
             })
-    data_response = requests.get(url).text
+    data_response = requests.get(url, timeout=20).text
     parsed_data = parse_markdown(data_response)
 
     return templates.TemplateResponse("v2_user.html", {

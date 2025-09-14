@@ -12,30 +12,30 @@ settings = Settings()
 
 templates = Jinja2Templates(directory=settings.TEMPLATE_DIR)
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Context manager for FastAPI app. It will run all code before `yield`
-    on app startup, and will run code after `yeld` on app shutdown.
-    """
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     """Context manager for FastAPI app. It will run all code before `yield`
+#     on app startup, and will run code after `yeld` on app shutdown.
+#     """
 
-    try:
-        subprocess.run([
-            "tailwindcss",
-            "-i",
-            str(settings.STATIC_DIR / "src" / "tw.css"),
-            "-o",
-            str(settings.STATIC_DIR / "css" / "main_new.css"),
-        ])
-    except Exception as e:
-        print(f"Error running tailwindcss: {e}")
+#     try:
+#         subprocess.run([
+#             "tailwindcss",
+#             "-i",
+#             str(settings.STATIC_DIR / "src" / "tw.css"),
+#             "-o",
+#             str(settings.STATIC_DIR / "css" / "main_new.css"),
+#         ])
+#     except Exception as e:
+#         print(f"Error running tailwindcss: {e}")
 
-    yield
+#     yield
 
 
 def get_app() -> FastAPI:
     """Create a FastAPI app with the specified settings."""
 
-    app = FastAPI(lifespan=lifespan, **settings.fastapi_kwargs)
+    app = FastAPI(**settings.fastapi_kwargs)
 
     app.mount("/static", StaticFiles(directory=settings.STATIC_DIR), name="static")
 
